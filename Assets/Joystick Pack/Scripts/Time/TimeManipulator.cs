@@ -3,37 +3,39 @@ using UnityEngine.UI;
 
 public class TimeManipulator : MonoBehaviour
 {
-    [Header("Настройки ускорения")]
-    public float initialTimeScale = 1f;    // Начальная скорость (1 = нормальная)
-    public float increaseInterval = 3f;    // Ускорение каждые 3 секунды
-    public float increaseAmount = 0.5f;    // ускорение на 10%
-    public float maxTimeScale = 3f;        // Максимальное ускорение (3x)
+    [Header("Time Acceleration Settings")]
+    public float initialTimeScale = 1f;    // Normal speed = 1.0
+    public float increaseInterval = 3f;    // Every 3 seconds
+    public float increaseAmount = 0.1f;    // +10% speed
+    public float maxTimeScale = 3f;        // Max 3x speed
 
-    [Header("Текст скорости")]
+    [Header("Speed UI")]
     public Text speedText;
 
     private float lastIncreaseTime;
+    private bool isPaused = false;
 
     private void Start()
     {
         Time.timeScale = initialTimeScale;
-        lastIncreaseTime = Time.time;
+        lastIncreaseTime = Time.unscaledTime;
         UpdateSpeedUI();
     }
 
     private void Update()
     {
-        if (Time.time - lastIncreaseTime >= increaseInterval)
+        if (isPaused) return;
+
+        if (Time.unscaledTime - lastIncreaseTime >= increaseInterval)
         {
             IncreaseSpeed();
-            lastIncreaseTime = Time.time;
+            lastIncreaseTime = Time.unscaledTime;
         }
     }
 
     private void IncreaseSpeed()
     {
-        Time.timeScale += increaseAmount;
-        Time.timeScale = Mathf.Min(Time.timeScale, maxTimeScale); // ограничение 
+        Time.timeScale = Mathf.Min(Time.timeScale + increaseAmount, maxTimeScale);
         UpdateSpeedUI();
     }
 
@@ -41,11 +43,13 @@ public class TimeManipulator : MonoBehaviour
     {
         if (speedText != null)
         {
-            speedText.text = $"Скорость: {Time.timeScale:F1}x";
+            speedText.text = $"Speed: {Time.timeScale:F1}x";
         }
     }
+
     public void SetPause(bool pause)
     {
+        isPaused = pause;
         Time.timeScale = pause ? 0f : initialTimeScale;
         UpdateSpeedUI();
     }

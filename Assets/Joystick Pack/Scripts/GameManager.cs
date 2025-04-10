@@ -22,6 +22,6 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool playerWon)
     {
         _isGameRunning = false;
-        Debug.Log(playerWon ? "Победа!" : "Поражение!");
+        Debug.Log(playerWon ? "Win!" : "Lose!");
     }
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
-    private bool _isGameRunning = true;
+    [SerializeField] private bool isGameOver;
 
     private void Awake()
     {
@@ -19,9 +19,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver(bool playerWon)
+    public void GameOver(bool isVictory)
     {
-        _isGameRunning = false;
-        Debug.Log(playerWon ? "Win!" : "Lose!");
+        isGameOver = true;
+        Time.timeScale = 0f;
+        Debug.Log(isVictory ? "VICTORY!" : "DEFEAT!");
     }
 }

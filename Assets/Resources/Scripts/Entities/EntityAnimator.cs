@@ -4,7 +4,7 @@ public abstract class EntityAnimator : MonoBehaviour
 {
     protected Animator animator;
     protected Entity entity;
-    private void Awake()
+    protected virtual void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         entity = gameObject.GetComponent<Entity>();
@@ -15,7 +15,11 @@ public abstract class EntityAnimator : MonoBehaviour
     protected abstract void animateMovement(Vector3 direction);
 
     protected abstract void animateDeath();
-    
+    protected virtual void OnDestroy()
+    {
+        entity.OnMove -= animateMovement;
+        entity.OnDeath -= animateDeath;
+    }
 
 
 }

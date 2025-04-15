@@ -16,6 +16,7 @@ public class Player : Entity
     void FixedUpdate()
     {
         Move();
+        Detector.DetectNearestObject(100f, LayerMask.NameToLayer("Enemy"), transform.position, true);
     }
     protected override void Awake()
     {
@@ -55,7 +56,5 @@ public class Player : Entity
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
         // Invoke event
         OnMove?.Invoke(movementVector);
-        // Flip model
-        Flip(movementVector);
     }
 }

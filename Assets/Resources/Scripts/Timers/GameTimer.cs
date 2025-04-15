@@ -48,7 +48,7 @@ public class GameTimer : MonoBehaviour
 
         protected override void OnTimerEnd()
         {
-            GameManager.Instance.GameOver(true);
+            Debug.Log("Win ili che");
         }
     }
 }

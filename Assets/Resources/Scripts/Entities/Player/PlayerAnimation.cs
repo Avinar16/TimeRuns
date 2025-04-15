@@ -5,6 +5,7 @@ public class PlayerAnimation: EntityAnimator
 {
     protected override void animateMovement(Vector3 direction)
     {
+        base.animateMovement(direction);
         animator.SetFloat("Velocity", direction.magnitude);
     }
     protected override void animateDeath()
@@ -18,7 +19,7 @@ public class PlayerAnimation: EntityAnimator
     }
     void animateDamage()
     {
-        StartCoroutine(Blink(new Color(1, 1, 1, 0.5f), Player.instance.invulnerabilityDuration, Player.instance.spriteRenderer));
+        StartCoroutine(Blink(new Color(1, 1, 1, 0.5f), Player.instance.invulnerabilityDuration, spriteRenderer));
     }
     private IEnumerator Blink(Color _damageColor, float blink_time, SpriteRenderer _sprite)
     {

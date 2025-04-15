@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 8651d6754d71cc7478228f05f88122a4
+guid: 35736c6d6a580304a8cc525cef5d5616
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7972654598090935624
-    second: monster2monster3_0
-  - first:
-      213: 7058524303048346910
-    second: monster2monster3_1
-  - first:
-      213: -4902986749645691512
-    second: monster2monster3_2
-  - first:
-      213: -1957337870547673930
-    second: monster2monster3_3
+      213: 7352100442833665881
+    second: C5D4tCoAcJY_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 5000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monster2monster3_0
+      name: C5D4tCoAcJY_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 49
-        width: 13
-        height: 13
+        x: 0
+        y: 0
+        width: 1080
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84d4814bd1f84ae60800000000000000
-      internalID: 7972654598090935624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster2monster3_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 49
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e1d88a9b47ae4f160800000000000000
-      internalID: 7058524303048346910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster2monster3_2
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 17
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 885ebe0478715fbb0800000000000000
-      internalID: -4902986749645691512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster2monster3_3
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 17
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6bc1690c39326d4e0800000000000000
-      internalID: -1957337870547673930
+      spriteID: 95fb7105668e70660800000000000000
+      internalID: 7352100442833665881
       vertices: []
       indices: 
       edges: []
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      monster2monster3_0: 7972654598090935624
-      monster2monster3_1: 7058524303048346910
-      monster2monster3_2: -4902986749645691512
-      monster2monster3_3: -1957337870547673930
+      C5D4tCoAcJY_0: 7352100442833665881
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

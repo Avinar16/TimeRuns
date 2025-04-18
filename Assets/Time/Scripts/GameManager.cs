@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] private bool isGameOver;
+    [SerializeField] private bool isGameOver; //test
 
     private void Awake()
     {

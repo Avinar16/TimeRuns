@@ -17,6 +17,7 @@ public class Enemy: Entity
     }
     private void Start()
     {
+        OnDeath += () => AudioManager.Instance.PlaySFX("EnemyDeath");
     }
     protected override void Move()
     {

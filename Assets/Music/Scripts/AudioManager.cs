@@ -1,13 +1,19 @@
-using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public event Action<string> OnMusicEvent;
+    [SerializeField] private List<SoundEffect> _soundEffects = new List<SoundEffect>();
+    private AudioSource _sfxSource;
 
-    private AudioSource audioSource;
+    [System.Serializable]
+    public class SoundEffect
+    {
+        public string name; // Например, "PlayerDamage"
+        public AudioClip clip; // Сам звуковой файл
+    }
 
     private void Awake()
     {
@@ -15,7 +21,7 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            audioSource = gameObject.AddComponent<AudioSource>();
+            _sfxSource = gameObject.AddComponent<AudioSource>();
         }
         else
         {
@@ -23,21 +29,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(string trackName)
+    public void PlaySFX(string soundName)
     {
-        OnMusicEvent?.Invoke(trackName);
-    }
-
-    private void HandleMusicEvent(string trackName)
-    {
-        AudioClip clip = Resources.Load<AudioClip>(trackName);
+        AudioClip clip = _soundEffects.Find(s => s.name == soundName)?.clip;
         if (clip != null)
         {
-            audioSource.clip = clip;
-            audioSource.Play();
+            _sfxSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning($"Звук {soundName} не найден!");
         }
     }
-
-    private void OnEnable() => OnMusicEvent += HandleMusicEvent;
-    private void OnDisable() => OnMusicEvent -= HandleMusicEvent;
 }

@@ -21,6 +21,14 @@ public class Player : Entity
     {
         instance = this;
         base.Awake();
+
+        OnDamageTaken += () => AudioManager.Instance.PlaySFX("PlayerDamage");
+        OnDeath += () => AudioManager.Instance.PlaySFX("PlayerDeath");
+        OnMove += (direction) =>
+        {
+            if (direction.magnitude > 0.1f)
+                AudioManager.Instance.PlaySFX("Footstep");
+        };
     }
     public override void TakeKnockBack(Vector2 direction, float distance)
     {

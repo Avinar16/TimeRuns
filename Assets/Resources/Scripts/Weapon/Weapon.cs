@@ -19,6 +19,8 @@ public abstract class Weapon : MonoBehaviour
     protected float bulletForce;
     [SerializeField]
     protected bool isHostile;
+    [SerializeField]
+    protected int bulletsToFire;
 
     protected bool isReadyToShoot;
     protected abstract void Navigate();

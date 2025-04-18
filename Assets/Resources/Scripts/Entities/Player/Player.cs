@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Entity
 {
     public static Player instance { get; private set; }
 
     public System.Action OnDamageTaken;
+
+    [SerializeField] private FloatingJoystick joystick;
 
     [Header("Damage window")]
     [SerializeField]
@@ -55,15 +58,22 @@ public class Player : Entity
 
     protected override void Move()
     {
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        float yAxis = Input.GetAxisRaw("Vertical");
-        Vector3 movementVector = new Vector2(xAxis, yAxis);
-        // Move
-        Vector2 targetPosition = transform.position + movementVector;
+        float horizontalInput = joystick.Horizontal;
+        float verticalInput = joystick.Vertical;
+
+        Vector3 movementVector = new Vector3(horizontalInput, verticalInput, 0f);
+
+        // Двигаем персонажа
+        Vector2 targetPosition = transform.position + movementVector * speed * Time.fixedDeltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
-        // Invoke event
+
+        // Поворот персонажа
+        if (movementVector.magnitude > 0.1f)
+        {
+            Flip(movementVector);
+        }
+
+        // Отправляем событие движения (для звуков шагов)
         OnMove?.Invoke(movementVector);
-        // Flip model
-        Flip(movementVector);
     }
 }

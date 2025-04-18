@@ -10,11 +10,13 @@ public class PlayerAnimation: EntityAnimator
     }
     protected override void animateDeath()
     {
-        
+        Debug.Log("ne poka ne hochu");
     }
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
+
+        Debug.Log($"{Player.instance.OnDamageTaken} {spriteRenderer}");
         Player.instance.OnDamageTaken += animateDamage;
     }
     void animateDamage()

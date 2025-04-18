@@ -6,7 +6,7 @@ public abstract class EntityAnimator : MonoBehaviour
     protected Entity entity;
     protected SpriteRenderer spriteRenderer;
     private bool isFlipped;
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         entity = gameObject.GetComponentInParent<Entity>();

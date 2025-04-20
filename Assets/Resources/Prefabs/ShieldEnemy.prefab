@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  MaxHealth: 100
-  health: 100
+  MaxHealth: 33
+  health: 33
   MaxFollowDistanse: 2
   collisionDamage: 5
   ItemToDrop: {fileID: 4488260317263697823, guid: 0ecefa528c558ef4fbad9635a14662c5, type: 3}

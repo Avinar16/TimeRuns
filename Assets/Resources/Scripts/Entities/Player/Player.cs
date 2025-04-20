@@ -21,33 +21,27 @@ public class Player : Entity
         Move();
         Detector.DetectNearestObject(100f, LayerMask.NameToLayer("Enemy"), transform.position, true);
     }
+
     protected override void Awake()
     {
         instance = this;
         base.Awake();
-        OnDamageTaken += () => AudioManager.Instance.PlaySFX("PlayerDamage");
-        OnDeath += () => AudioManager.Instance.PlaySFX("PlayerDeath");
-        OnMove += (direction) =>
-        {
-            if (direction.magnitude > 0.1f)
-                AudioManager.Instance.PlaySFX("Footstep");
-        };
-
     }
+
     public override void TakeKnockBack(Vector2 direction, float distance)
     {
         if (_isInvulnerable) { return; }
         base.TakeKnockBack(direction, distance);
     }
+
     public override void TakeDamage(int damage)
     {
         if (_isInvulnerable) return;
         base.TakeDamage(damage);
-
-        // Message to all subs
         OnDamageTaken?.Invoke();
         StartCoroutine(ProcessDamageWindow());
     }
+
     private IEnumerator ProcessDamageWindow()
     {
         _isInvulnerable = true;
@@ -63,7 +57,6 @@ public class Player : Entity
         float verticalInput = joystick.Vertical;
 
         Vector3 movementVector = new Vector3(horizontalInput, verticalInput, 0f);
-
 
         Vector2 targetPosition = transform.position + movementVector * speed * Time.fixedDeltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);

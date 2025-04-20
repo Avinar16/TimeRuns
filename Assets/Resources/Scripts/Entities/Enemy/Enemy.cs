@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy: Entity
+public class Enemy : Entity
 {
     [SerializeField]
     float MaxFollowDistanse;
@@ -11,14 +11,16 @@ public class Enemy: Entity
     [SerializeField]
     float KnockBackDistance;
 
+    private void Start()
+    {
+        AudioManager.Instance?.SubscribeEnemyDeath(this);
+    }
+
     private void FixedUpdate()
     {
         Move();
     }
-    private void Start()
-    {
-        OnDeath += () => AudioManager.Instance.PlaySFX("EnemyDeath");
-    }
+
     protected override void Move()
     {
         Vector3 PlayerPosition = Player.instance.transform.position;
@@ -28,6 +30,7 @@ public class Enemy: Entity
             rb.linearVelocity = movementVector * speed;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

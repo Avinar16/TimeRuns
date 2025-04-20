@@ -8,11 +8,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<SoundEffect> _soundEffects = new List<SoundEffect>();
     private AudioSource _sfxSource;
 
+    private float _lastFootstepTime;
+    private const float FOOTSTEP_DELAY = 1f;
+
     [System.Serializable]
     public class SoundEffect
     {
-        public string name; // Например, "PlayerDamage"
-        public AudioClip clip; // Сам звуковой файл
+        public string name;
+        public AudioClip clip;
+        public string eventName;
     }
 
     private void Awake()
@@ -22,11 +26,39 @@ public class AudioManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             _sfxSource = gameObject.AddComponent<AudioSource>();
+            InitializeEventSubscriptions();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void InitializeEventSubscriptions()
+    {
+        if (Player.instance != null)
+        {
+            Player.instance.OnDamageTaken += () => PlayEventSFX("PlayerDamage");
+            Player.instance.OnDeath += () => PlayEventSFX("PlayerDeath");
+            Player.instance.OnMove += (direction) =>
+            {
+                if (direction.magnitude > 0.1f && CanPlayFootstep())
+                {
+                    PlayEventSFX("Footstep");
+                    _lastFootstepTime = Time.time;
+                }
+            };
+        }
+    }
+
+    private bool CanPlayFootstep()
+    {
+        return Time.time - _lastFootstepTime >= FOOTSTEP_DELAY;
+    }
+
+    public void SubscribeEnemyDeath(Enemy enemy)
+    {
+        enemy.OnDeath += () => PlayEventSFX("EnemyDeath");
     }
 
     public void PlaySFX(string soundName)
@@ -38,7 +70,16 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Звук {soundName} не найден!");
+            Debug.LogWarning($"Sound {soundName} not found!");
+        }
+    }
+
+    private void PlayEventSFX(string eventName)
+    {
+        var sound = _soundEffects.Find(s => s.eventName == eventName);
+        if (sound != null)
+        {
+            _sfxSource.PlayOneShot(sound.clip);
         }
     }
 }

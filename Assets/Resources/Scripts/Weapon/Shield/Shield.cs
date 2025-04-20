@@ -36,17 +36,35 @@ public class Shield : Weapon
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (!isHostile)
         {
-            Enemy target = collision.gameObject.GetComponent<Enemy>();
-            target.TakeDamage(damage);
-            Vector2 direction = (collision.transform.position - transform.position).normalized;
-            target.TakeKnockBack(direction, knockbackForce);
-            StartCoroutine(Reload(reloadTime));
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                Enemy target = collision.gameObject.GetComponent<Enemy>();
+                target.TakeDamage(damage);
+                Vector2 direction = (collision.transform.position - transform.position).normalized;
+                target.TakeKnockBack(direction, knockbackForce);
+                StartCoroutine(Reload(reloadTime));
+            }
+            else if (collision.gameObject.layer == LayerMask.NameToLayer("Hostile_projectile"))
+            {
+                Destroy(collision.gameObject);
+            }
         }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Hostile_projectile"))
+        else
         {
-            Destroy(collision.gameObject);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                Entity target = collision.gameObject.GetComponent<Entity>();
+                target.TakeDamage(damage);
+                Vector2 direction = (collision.transform.position - transform.position).normalized;
+                target.TakeKnockBack(direction, knockbackForce);
+                StartCoroutine(Reload(reloadTime));
+            }
+            else if (collision.gameObject.layer == LayerMask.NameToLayer("Player_projectile"))
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
     private void Update()

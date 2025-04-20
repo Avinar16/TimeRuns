@@ -7,6 +7,10 @@ public class Enemy: Entity
     [SerializeField]
     [Range(0, 10)]
     int collisionDamage;
+    [SerializeField]
+    GameObject ItemToDrop;
+    [SerializeField]
+    float chanceToDrop;
 
     [SerializeField]
     float KnockBackDistance;
@@ -15,7 +19,7 @@ public class Enemy: Entity
     {
         Move();
     }
-    private void Start()
+    protected virtual void Start()
     {
         OnDeath += () => AudioManager.Instance.PlaySFX("EnemyDeath");
     }
@@ -27,6 +31,7 @@ public class Enemy: Entity
         {
             rb.linearVelocity = movementVector * speed;
         }
+        OnMove?.Invoke(movementVector);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,5 +41,17 @@ public class Enemy: Entity
             Player.instance.TakeKnockBack(knockBackDirection, KnockBackDistance);
             Player.instance.TakeDamage(collisionDamage);
         }
+    }
+    protected override void Die()
+    {
+        if (ItemToDrop != null)
+        {
+            float random = Random.Range(0, 1f);
+            if (random < chanceToDrop)
+            {
+                Instantiate(ItemToDrop, transform.position, transform.rotation);
+            }
+        }
+        base.Die();
     }
 }

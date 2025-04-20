@@ -1,9 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
-public class Cat_enemy : Enemy
+public class Slime_mom : Enemy
 {
     [SerializeField]
     private float distanceToRunAway;
+
+    [SerializeField]
+    GameObject Slime;
+    [SerializeField]
+    float timeToSpawn;
+    [SerializeField]
+    int slimesToSpawn;
 
     protected override void Move()
     {
@@ -22,4 +30,18 @@ public class Cat_enemy : Enemy
         }
     }
 
+    private IEnumerator SpawnSlimes()
+    {
+        for (int i = 0; i < slimesToSpawn; i++)
+        {
+            Instantiate(Slime, transform.position, Quaternion.identity);
+        }
+        yield return new WaitForSeconds(timeToSpawn);
+        StartCoroutine(SpawnSlimes());
+    }
+    protected override void Start()
+    {
+        base.Start();
+        StartCoroutine(SpawnSlimes());
+    }
 }

@@ -21,7 +21,7 @@ public class PlayerAnimation: EntityAnimator
     }
     void animateDamage()
     {
-        StartCoroutine(Blink(new Color(1, 1, 1, 0.5f), Player.instance.invulnerabilityDuration, spriteRenderer));
+        StartCoroutine(Blink(new Color(1, 1, 1, 0.5f), Player.instance.invulnerabilityDuration - 0.2f, spriteRenderer));
     }
     private IEnumerator Blink(Color _damageColor, float blink_time, SpriteRenderer _sprite)
     {

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae3386278050cf498adabc9e4792a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 2
+  reloadTime: 0.5
   damage: 10
   knockbackForce: 2
   shootingRange: 0
@@ -52,3 +52,4 @@ MonoBehaviour:
   bulletForce: 1
   isHostile: 0
   bulletsToFire: 100
+  bulletSpread: 0

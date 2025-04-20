@@ -36,4 +36,11 @@ public class Vertical_gravity_weapon : Weapon
     {
         Shoot();
     }
+    public override void Upgrage()
+    {
+        base.Upgrage();
+        if (level > 1) { 
+        bulletsToFire++;
+        }
+    }
 }

@@ -249,9 +249,10 @@ MonoBehaviour:
   MaxFollowDistanse: 3
   collisionDamage: 10
   ItemToDrop: {fileID: 4488260317263697823, guid: 0ecefa528c558ef4fbad9635a14662c5, type: 3}
-  chanceToDrop: 1
+  chanceToDrop: 0.33
   KnockBackDistance: 4
   distanceToRunAway: 4
   Slime: {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
   timeToSpawn: 3
   slimesToSpawn: 3
+  maxSpawns: 10

@@ -16,6 +16,13 @@ public class Player : Entity
     public float invulnerabilityDuration;
     private bool _isInvulnerable;
 
+    [SerializeField]
+    Weapon[] weapons;
+
+    [Header("Level")]
+    [SerializeField]
+    private int level = 0;
+
     void FixedUpdate()
     {
         Move();
@@ -69,5 +76,10 @@ public class Player : Entity
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
 
         OnMove?.Invoke(movementVector);
+    }
+    public void LevelUp()
+    {
+        level++;
+        weapons[level % 4].Upgrage();
     }
 }

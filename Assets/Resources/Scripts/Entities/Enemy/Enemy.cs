@@ -44,14 +44,12 @@ public class Enemy: Entity
     }
     protected override void Die()
     {
-        if (ItemToDrop != null)
-        {
+        ItemToDrop = ItemList.instance.ChooseRandomItem();
             float random = Random.Range(0, 1f);
             if (random < chanceToDrop)
             {
                 Instantiate(ItemToDrop, transform.position, transform.rotation);
             }
-        }
         base.Die();
     }
 }

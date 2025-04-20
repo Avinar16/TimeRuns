@@ -133,12 +133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadTime: 2
-  damage: 10
+  damage: 6
   knockbackForce: 0
   shootingRange: 6
   bullet: {fileID: 5320502046166668943, guid: 8606f7ddba3cab744b61ebe8529baf2c, type: 3}
   bulletForce: 4
   isHostile: 0
-  bulletsToFire: 1
+  bulletsToFire: 2
   orbitRadius: 0.75
-  timeBetweenBullets: 0
+  timeBetweenBullets: 0.6

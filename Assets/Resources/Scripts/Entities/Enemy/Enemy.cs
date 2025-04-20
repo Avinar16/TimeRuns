@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy: Entity
+public class Enemy : Entity
 {
     [SerializeField]
     protected float MaxFollowDistanse;
@@ -11,9 +11,6 @@ public class Enemy: Entity
     GameObject ItemToDrop;
     [SerializeField]
     float chanceToDrop;
-
-    [SerializeField]
-    float KnockBackDistance;
 
     protected virtual void FixedUpdate()
     {
@@ -35,10 +32,8 @@ public class Enemy: Entity
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            Vector2 knockBackDirection = (Player.instance.transform.position - transform.position).normalized;
-            Player.instance.TakeKnockBack(knockBackDirection, KnockBackDistance);
             Player.instance.TakeDamage(collisionDamage);
         }
     }

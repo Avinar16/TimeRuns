@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292730895396b434abdd4e9fb00603c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
+  MaxHealth: 0
   health: 16
+  joystick: {fileID: 0}
   invulnerabilityDuration: 2
 --- !u!1 &8008555850896484821
 GameObject:

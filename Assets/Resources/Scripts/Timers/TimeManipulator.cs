@@ -14,7 +14,7 @@ public class TimeManipulator : MonoBehaviour
     [SerializeField] private Color highlightColor = Color.yellow;
 
     public float currentTimeScale;
-    private float lastAccelerationTime;
+    public float lastAccelerationTime;
     private Color originalColor;
     private bool isPaused;
 

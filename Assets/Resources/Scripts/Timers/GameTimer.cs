@@ -64,6 +64,7 @@ public class GameTimer : MonoBehaviour
 
         protected override void OnTimerEnd()
         {
+            Debug.Log("Win ili che");
         }
     }
 }

@@ -19,6 +19,7 @@ public class Player : Entity
     void FixedUpdate()
     {
         Move();
+        Detector.DetectNearestObject(100f, LayerMask.NameToLayer("Enemy"), transform.position, true);
     }
     protected override void Awake()
     {

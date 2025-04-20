@@ -5,20 +5,23 @@ public class PlayerAnimation: EntityAnimator
 {
     protected override void animateMovement(Vector3 direction)
     {
+        base.animateMovement(direction);
         animator.SetFloat("Velocity", direction.magnitude);
     }
     protected override void animateDeath()
     {
-        
+        Debug.Log("ne poka ne hochu");
     }
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
+
+        Debug.Log($"{Player.instance.OnDamageTaken} {spriteRenderer}");
         Player.instance.OnDamageTaken += animateDamage;
     }
     void animateDamage()
     {
-        StartCoroutine(Blink(new Color(1, 1, 1, 0.5f), Player.instance.invulnerabilityDuration, Player.instance.spriteRenderer));
+        StartCoroutine(Blink(new Color(1, 1, 1, 0.5f), Player.instance.invulnerabilityDuration, spriteRenderer));
     }
     private IEnumerator Blink(Color _damageColor, float blink_time, SpriteRenderer _sprite)
     {

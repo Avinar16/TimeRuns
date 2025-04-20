@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7049064003674680603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021082618766676124}
+  - component: {fileID: 8797737131217113186}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021082618766676124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7049064003674680603}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8797737131217113186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7049064003674680603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bba24edc303cc8408dd1a63a0c08a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - waveName: Slimes_hard
+    enemies:
+    - {fileID: 7805237685036202386, guid: d7f31179829cb0b449f51b3b4b06086a, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+  - waveName: Slime_easy
+    enemies:
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+  - waveName: Knights_hard
+    enemies:
+    - {fileID: 5509980169549428600, guid: b870ca963c553644b910e57931aad658, type: 3}
+    - {fileID: 5509980169549428600, guid: b870ca963c553644b910e57931aad658, type: 3}
+    - {fileID: 5509980169549428600, guid: b870ca963c553644b910e57931aad658, type: 3}
+  - waveName: Knights_easy
+    enemies:
+    - {fileID: 5509980169549428600, guid: b870ca963c553644b910e57931aad658, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+  - waveName: Cats_easy
+    enemies:
+    - {fileID: 7926844768726887682, guid: ffba2e36f56f5e342849ee16782606ea, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+  - waveName: Cats_hard
+    enemies:
+    - {fileID: 7926844768726887682, guid: ffba2e36f56f5e342849ee16782606ea, type: 3}
+    - {fileID: 7926844768726887682, guid: ffba2e36f56f5e342849ee16782606ea, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+  - waveName: Jelly_easy
+    enemies:
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+  - waveName: Death)
+    enemies:
+    - {fileID: 7805237685036202386, guid: d7f31179829cb0b449f51b3b4b06086a, type: 3}
+    - {fileID: 5509980169549428600, guid: b870ca963c553644b910e57931aad658, type: 3}
+    - {fileID: 7926844768726887682, guid: ffba2e36f56f5e342849ee16782606ea, type: 3}
+    - {fileID: 6645093791192928530, guid: f7af6a2d10cccb6468f03a88bae08cf4, type: 3}
+    - {fileID: 9100168394238420007, guid: e554ef160881d1449af5e0c0701cac07, type: 3}
+    - {fileID: 6725712206067752426, guid: 476ba70ad69be534ea33866df1a411cc, type: 3}
+  timeBetweenWaves: 10
+  spawnInterval: 0.5
+  waveSpreadRadius: 2
+  maxEntities: 20
+  totalEntities: 0
+  player: {fileID: 0}
+  minDistanceFromPlayer: 7
+  maxDistanceFromPlayer: 10
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0

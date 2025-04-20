@@ -12,6 +12,9 @@ public class Slime_mom : Enemy
     float timeToSpawn;
     [SerializeField]
     int slimesToSpawn;
+    [SerializeField]
+    int maxSpawns = 10;
+    int currentSpawns;
 
     protected override void Move()
     {
@@ -32,9 +35,11 @@ public class Slime_mom : Enemy
 
     private IEnumerator SpawnSlimes()
     {
+        if (currentSpawns <= maxSpawns)
         for (int i = 0; i < slimesToSpawn; i++)
         {
             Instantiate(Slime, transform.position, Quaternion.identity);
+            currentSpawns++;
         }
         yield return new WaitForSeconds(timeToSpawn);
         StartCoroutine(SpawnSlimes());

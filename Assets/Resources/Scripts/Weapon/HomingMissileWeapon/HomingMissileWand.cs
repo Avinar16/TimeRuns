@@ -13,12 +13,15 @@ public class HomingMissileWand : Weapon
 
     protected override void Shoot()
     {
+        
         if (!isReadyToShoot || target == null) { return; }
         isReadyToShoot = false;
+        
         StartCoroutine(ShootRoutine());
     }
     private IEnumerator ShootRoutine()
     {
+       // Debug.Log($"{target}");
         for (int i = 0; i < bulletsToFire; i++)
         {
             //Spawn
@@ -46,7 +49,7 @@ public class HomingMissileWand : Weapon
     {
         if (!isHostile)
         {
-            target = Detector.nearestEnemyRelativeleToPlayer;
+            target = Detector.DetectNearestObject(shootingRange, LayerMask.NameToLayer("Enemy"), transform.position, true);
         }
         else
         {
@@ -66,6 +69,19 @@ public class HomingMissileWand : Weapon
         else
         {
             transform.localPosition = Vector3.right * orbitRadius;
+        }
+    }
+    protected override void Start()
+    {
+        base.Start();
+        Upgrage();
+    }
+    public override void Upgrage()
+    {
+        base.Upgrage();
+        if (level > 1)
+        {
+            bulletsToFire++;
         }
     }
 }

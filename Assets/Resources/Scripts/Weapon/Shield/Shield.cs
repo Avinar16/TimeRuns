@@ -71,5 +71,12 @@ public class Shield : Weapon
     {
         Navigate();
     }
-
+    public override void Upgrage()
+    {
+        base.Upgrage();
+        if (level > 1)
+        {
+            orbitSpeed += 0.3f;
+        }
+    }
 }

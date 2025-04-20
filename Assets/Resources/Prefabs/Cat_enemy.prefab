@@ -268,10 +268,10 @@ MonoBehaviour:
   health: 100
   MaxFollowDistanse: 2
   collisionDamage: 5
+  ItemToDrop: {fileID: 8227255323786512299, guid: 0ba450a1aa2b06148a188701b5d25bdf, type: 3}
+  chanceToDrop: 0.33
   KnockBackDistance: 2
   distanceToRunAway: 5
-  ItemToDrop: {fileID: 8227255323786512299, guid: 0ba450a1aa2b06148a188701b5d25bdf, type: 3}
-  chanceToDrop: 1
 --- !u!1001 &4878845479791902123
 PrefabInstance:
   m_ObjectHideFlags: 0

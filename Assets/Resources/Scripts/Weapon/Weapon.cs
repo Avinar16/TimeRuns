@@ -21,6 +21,9 @@ public abstract class Weapon : MonoBehaviour
     protected bool isHostile;
     [SerializeField]
     protected int bulletsToFire;
+    [Header("Level")]
+    [SerializeField]protected int level = 0;
+    [SerializeField] protected int maxLevel = 5;
 
     protected bool isReadyToShoot;
     protected abstract void Navigate();
@@ -29,9 +32,19 @@ public abstract class Weapon : MonoBehaviour
         yield return new WaitForSeconds(time);
         isReadyToShoot = true;
     }
-    private void Start()
+    protected virtual void Start()
     {
         isReadyToShoot = true;
+    }
+    public virtual void Upgrage()
+    {
+        if (level >= maxLevel) return;
+        level++;
+        if(level == 1)
+        {
+            gameObject.SetActive(true);
+            return;
+        }
     }
 
 }

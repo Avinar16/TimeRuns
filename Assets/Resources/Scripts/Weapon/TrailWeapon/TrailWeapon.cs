@@ -33,4 +33,12 @@ public class TrailWeapon : Weapon
     {
         Shoot();
     }
+    public override void Upgrage()
+    {
+        base.Upgrage();
+        if (level > 1)
+        {
+            reloadTime -= 0.05f;
+        }
+    }
 }

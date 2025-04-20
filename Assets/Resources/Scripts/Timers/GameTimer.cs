@@ -45,7 +45,7 @@ public class GameTimer : MonoBehaviour
 
         if (timer.CurrentTime <= 0)
         {
-            GameManager.Instance.GameOver(true);
+            GameManager.Instance.GameOver();
         }
     }
 

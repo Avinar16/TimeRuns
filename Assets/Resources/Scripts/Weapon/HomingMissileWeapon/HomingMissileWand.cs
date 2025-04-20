@@ -49,5 +49,9 @@ public class HomingMissileWand : Weapon
             //Debug.Log($"{newPosition}");
             transform.localPosition = Vector2.Lerp(transform.localPosition, newPosition, Time.deltaTime * 10f);
         }
+        else
+        {
+            transform.localPosition = Vector3.right * orbitRadius;
+        }
     }
 }

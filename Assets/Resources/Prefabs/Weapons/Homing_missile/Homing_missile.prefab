@@ -135,7 +135,7 @@ MonoBehaviour:
   reloadTime: 2
   damage: 10
   knockbackForce: 0
-  shootingRange: 10
+  shootingRange: 6
   bullet: {fileID: 5320502046166668943, guid: 8606f7ddba3cab744b61ebe8529baf2c, type: 3}
   bulletForce: 2
   isHostile: 0

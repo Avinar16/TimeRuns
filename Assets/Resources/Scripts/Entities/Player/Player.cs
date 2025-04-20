@@ -25,7 +25,6 @@ public class Player : Entity
     {
         instance = this;
         base.Awake();
-
         OnDamageTaken += () => AudioManager.Instance.PlaySFX("PlayerDamage");
         OnDeath += () => AudioManager.Instance.PlaySFX("PlayerDeath");
         OnMove += (direction) =>
@@ -33,10 +32,11 @@ public class Player : Entity
             if (direction.magnitude > 0.1f)
                 AudioManager.Instance.PlaySFX("Footstep");
         };
+
     }
     public override void TakeKnockBack(Vector2 direction, float distance)
     {
-        if(_isInvulnerable) { return; }
+        if (_isInvulnerable) { return; }
         base.TakeKnockBack(direction, distance);
     }
     public override void TakeDamage(int damage)
@@ -64,17 +64,10 @@ public class Player : Entity
 
         Vector3 movementVector = new Vector3(horizontalInput, verticalInput, 0f);
 
-        // Двигаем персонажа
+
         Vector2 targetPosition = transform.position + movementVector * speed * Time.fixedDeltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
 
-        // Поворот персонажа
-        if (movementVector.magnitude > 0.1f)
-        {
-            Flip(movementVector);
-        }
-
-        // Отправляем событие движения (для звуков шагов)
         OnMove?.Invoke(movementVector);
     }
 }

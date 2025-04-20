@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy: Entity
 {
     [SerializeField]
-    float MaxFollowDistanse;
+    protected float MaxFollowDistanse;
     [SerializeField]
     [Range(0, 10)]
     int collisionDamage;
@@ -11,7 +11,7 @@ public class Enemy: Entity
     [SerializeField]
     float KnockBackDistance;
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Move();
     }

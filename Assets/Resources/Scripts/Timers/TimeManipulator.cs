@@ -13,13 +13,20 @@ public class TimeManipulator : MonoBehaviour
     [SerializeField] private Text speedIndicator;
     [SerializeField] private Color highlightColor = Color.yellow;
 
-    private float currentTimeScale;
+    public float currentTimeScale;
     private float lastAccelerationTime;
     private Color originalColor;
     private bool isPaused;
 
+    public static TimeManipulator instance { get; private set; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
+        
         currentTimeScale = initialTimeScale;
         Time.timeScale = currentTimeScale;
         originalColor = speedIndicator.color;
@@ -42,7 +49,7 @@ public class TimeManipulator : MonoBehaviour
         }
     }
 
-    private void AccelerateTime()
+    public void AccelerateTime()
     {
         currentTimeScale = Mathf.Min(currentTimeScale + accelerationStep, maxTimeScale);
         Time.timeScale = currentTimeScale;
@@ -50,7 +57,7 @@ public class TimeManipulator : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         speedIndicator.text = $"Speed: {Time.timeScale:0.0}x";
     }

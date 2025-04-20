@@ -44,7 +44,7 @@ public class Shield : Weapon
             target.TakeKnockBack(direction, knockbackForce);
             StartCoroutine(Reload(reloadTime));
         }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Hostile_projectile"))
         {
             Destroy(collision.gameObject);
         }
